@@ -8,6 +8,22 @@ app.use(express.json());
 
 let students = [];
 
+// Ruta main
+
+app.get('/', (req, res) => {
+    const htmlResponse = `
+        <html>
+            <head>
+                <title>API - CRUD - UNSTA</title>
+            </head>
+            <body>
+                <h1>Esta es la api de la unsta</h1>
+            </body>
+        </html>
+    `;
+    res.send(htmlResponse);
+});
+
 // Ruta para obtener todos los alumnos
 app.get('/students', (req, res) => {
     res.json(students);
