@@ -5,7 +5,7 @@ Esta API permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) s
 ## URL Base
 
 ```
-https://nombre-de-tu-app.herokuapp.com
+[https://api-crud-unsta.netlify.app/]
 ```
 
 ## Endpoints Disponibles
