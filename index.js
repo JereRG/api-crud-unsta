@@ -71,6 +71,30 @@ app.delete('/students/:studentId', (req, res) => {
     res.sendStatus(204);
 });
 
+// Ruta para obtener las materias y notas de un alumno por su ID
+app.get('/students/:studentId/grades', (req, res) => {
+    const studentId = req.params.studentId;
+    const student = students.find(student => student.studentId === studentId);
+    if (!student) {
+        return res.status(404).json({ error: 'Alumno no encontrado' });
+    }
+    res.json(student.subjects);
+});
+
+// Ruta para modificar las materias de un alumno por su ID
+app.put('/students/:studentId/subjects', (req, res) => {
+    const studentId = req.params.studentId;
+    const { subjects } = req.body;
+
+    const studentIndex = students.findIndex(student => student.studentId === studentId);
+    if (studentIndex === -1) {
+        return res.status(404).json({ error: 'Alumno no encontrado' });
+    }
+
+    students[studentIndex].subjects = subjects;
+    res.json({ message: 'Materias actualizadas exitosamente', student: students[studentIndex] });
+});
+
 // Ruta para agregar una nota a una materia especifica de un alumno
 app.post('/students/:studentId/subjects/:subjectName/grades', (req, res) => {
     const studentId = req.params.studentId;
