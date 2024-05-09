@@ -5,7 +5,7 @@ Esta API permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) s
 ## URL Base
 
 ```
-[https://api-crud-unsta.netlify.app/]
+[https://api-crud-unsta.vercel.app/]
 ```
 
 ## Endpoints Disponibles
@@ -118,25 +118,66 @@ Ejemplo del cuerpo de la solicitud:
 }
 ```
 
-## Ejemplo de Uso
+### Obtener las materias y notas de un alumno por su ID
 
-```bash
-# Crear un nuevo alumno
-curl -X POST -H "Content-Type: application/json" -d '{"name": "Juan", "studentId": "12345", "subjects": [{"name": "Matemáticas", "grades": []}, {"name": "Historia", "grades": []}]}' https://api-crud-unsta.netlify.app/students
-
-# Obtener todos los alumnos
-curl https://api-crud-unsta.netlify.app/students
-
-# Obtener un alumno por su ID
-curl https://api-crud-unsta.netlify.app/students/12345
-
-# Actualizar los datos de un alumno
-curl -X PUT -H "Content-Type: application/json" -d '{"name": "Juan Pérez", "subjects": [{"name": "Matemáticas", "grades": [8, 9, 7]}, {"name": "Historia", "grades": [7, 6, 8]}]}' https://api-crud-unsta.netlify.app/students/12345
-
-# Eliminar un alumno
-curl -X DELETE https://api-crud-unsta.netlify.app/students/12345
-
-# Agregar una nota a una materia de un alumno
-curl -X POST -H "Content-Type: application/json" -d '{"grade": 9}' https://api-crud-unsta.netlify.app/students/12345/subjects/Matemáticas/grades
 ```
+GET /students/:studentId/grades
+```
+
+Esta ruta permite obtener las materias y notas de un alumno específico utilizando su ID.
+
+#### Parámetros del Cuerpo de la Solicitud
+
+- `:studentId` El ID del alumno del cual se desean obtener las materias y notas.
+
+#### Ejemplo de uso
+
+```
+GET /students/12345/grades
+```
+
+### Modificar las materias de un alumno por su ID
+
+```
+PUT /students/:studentId/subjects
+```
+
+Esta ruta permite modificar las materias de un alumno específico utilizando su ID. Se pueden agregar, actualizar o eliminar materias.
+
+#### Parámetros del Cuerpo de la Solicitud
+
+- `:studentId` El ID del alumno cuyas materias se desean modificar.
+  
+Datos en el cuerpo de la solicitud (JSON):
+
+- `subjects`  La lista actualizada de materias del alumno.
+
+#### Ejemplo de uso
+
+```
+PUT /students/12345/subjects
+```
+
+Datos en el cuerpo de la solicitud:
+
+```json
+{
+    "subjects": [
+        {
+            "name": "FrontEnd",
+            "grades": [8, 9, 7]
+        },
+        {
+            "name": "BackEnd",
+            "grades": [7, 9, 6]
+        },{
+            "name": "FCC",
+            "grades": [8, 10, 6]
+        },
+    ]
+}
+```
+
+
+
 
