@@ -118,25 +118,4 @@ Ejemplo del cuerpo de la solicitud:
 }
 ```
 
-## Ejemplo de Uso
-
-```bash
-# Crear un nuevo alumno
-curl -X POST -H "Content-Type: application/json" -d '{"name": "Juan", "studentId": "12345", "subjects": [{"name": "Matemáticas", "grades": []}, {"name": "Historia", "grades": []}]}' https://api-crud-unsta.vercel.app/students
-
-# Obtener todos los alumnos
-curl https://api-crud-unsta.vercel.app/students
-
-# Obtener un alumno por su ID
-curl https://api-crud-unsta.vercel.app/students/12345
-
-# Actualizar los datos de un alumno
-curl -X PUT -H "Content-Type: application/json" -d '{"name": "Juan Pérez", "subjects": [{"name": "Matemáticas", "grades": [8, 9, 7]}, {"name": "Historia", "grades": [7, 6, 8]}]}' https://api-crud-unsta.vercel.app/students/12345
-
-# Eliminar un alumno
-curl -X DELETE https://api-crud-unsta.vercel.app/students/12345
-
-# Agregar una nota a una materia de un alumno
-curl -X POST -H "Content-Type: application/json" -d '{"grade": 9}' https://api-crud-unsta.vercel.app/students/12345/subjects/Matemáticas/grades
-```
 
