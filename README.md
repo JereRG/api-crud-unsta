@@ -118,4 +118,66 @@ Ejemplo del cuerpo de la solicitud:
 }
 ```
 
+### Obtener las materias y notas de un alumno por su ID
+
+```
+GET /students/:studentId/grades
+```
+
+Esta ruta permite obtener las materias y notas de un alumno específico utilizando su ID.
+
+#### Parámetros del Cuerpo de la Solicitud
+
+- `:studentId` El ID del alumno del cual se desean obtener las materias y notas.
+
+#### Ejemplo de uso
+
+```
+GET /students/12345/grades
+```
+
+### Modificar las materias de un alumno por su ID
+
+```
+PUT /students/:studentId/subjects
+```
+
+Esta ruta permite modificar las materias de un alumno específico utilizando su ID. Se pueden agregar, actualizar o eliminar materias.
+
+#### Parámetros del Cuerpo de la Solicitud
+
+- `:studentId` El ID del alumno cuyas materias se desean modificar.
+  
+Datos en el cuerpo de la solicitud (JSON):
+
+- `subjects`  La lista actualizada de materias del alumno.
+
+#### Ejemplo de uso
+
+```
+PUT /students/12345/subjects
+```
+
+Datos en el cuerpo de la solicitud:
+
+```json
+{
+    "subjects": [
+        {
+            "name": "FrontEnd",
+            "grades": [8, 9, 7]
+        },
+        {
+            "name": "BackEnd",
+            "grades": [7, 9, 6]
+        },{
+            "name": "FCC",
+            "grades": [8, 10, 6]
+        },
+    ]
+}
+```
+
+
+
 
